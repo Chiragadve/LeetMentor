@@ -1,7 +1,6 @@
 // LeetCode Mentor - Background Service (Hybrid: Sponsored + BYOK + Onboarding)
-// Version: 3.6 - Debugging
-// CONFIG: Importing Secrets from git-ignored file
-import { API_KEYS } from './secrets.js';
+// Version: 3.8 - Clone Resilient
+// CONFIG: Dynamic Import used to ensure startup even if secrets.js is missing.
 
 const MODELS = {
     GEMINI: "gemini-2.5-flash",
@@ -20,7 +19,26 @@ chrome.runtime.onInstalled.addListener((details) => {
 });
 
 // --- KEY MANAGEMENT ---
+let cachedSecrets = null;
+
+async function getSecrets() {
+    if (cachedSecrets) return cachedSecrets;
+    try {
+        // Dynamic import logic: Try to load secrets.js, fail gracefully if missing
+        const module = await import('./secrets.js');
+        cachedSecrets = module.API_KEYS || {};
+        console.log("[Config] Loaded keys from secrets.js");
+    } catch (e) {
+        console.log("[Config] secrets.js not found (Fresh Clone). Using empty defaults.");
+        cachedSecrets = {};
+    }
+    return cachedSecrets;
+}
+
 async function getApiKey(service) {
+    // Ensure secrets are loaded (or defaulted to empty)
+    const secrets = await getSecrets();
+
     return new Promise((resolve) => {
         const keyMap = {
             'GEMINI': 'geminiKey',
@@ -40,7 +58,7 @@ async function getApiKey(service) {
                 resolve(userKey.trim());
             } else {
                 // FALLBACK: Use Developer/Sponsor Keys (from secrets.js)
-                const secretKey = API_KEYS[service];
+                const secretKey = secrets[service];
                 const isPlaceholder = secretKey && secretKey.includes("YOUR_");
 
                 console.log(`[KeyCheck] User Key Empty. Using Secrets for ${service}. Placeholder? ${isPlaceholder}`);
