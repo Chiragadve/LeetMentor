@@ -1,0 +1,62 @@
+{
+    "manifest_version": 3,
+    "name": "LeetMentor",
+    "version": "3.7",
+    "description": "Your own LeetCode Mentor. Get hints, error analysis, and logic verification to master algorithms without spoilers.",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://leetcode.com/problems/*",
+        "https://generativelanguage.googleapis.com/*",
+        "https://api.groq.com/*",
+        "https://openrouter.ai/*"
+    ],
+    "action": {
+        "default_title": "LeetMentor",
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "logo.png",
+            "48": "logo.png",
+            "128": "logo.png"
+        }
+    },
+    "icons": {
+        "16": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://leetcode.com/problems/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "injected_extractor.js",
+                "styles.css",
+                "logo.png"
+            ],
+            "matches": [
+                "https://leetcode.com/*"
+            ]
+        }
+    ]
+}

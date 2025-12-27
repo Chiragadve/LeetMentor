@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LeetMentor Settings</title>
+    <style>
+        body {
+            font-family: -apple-system, system-ui, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        button {
+            background: #2ea44f;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2c974b;
+        }
+
+        #status {
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LeetMentor Settings</h1>
+
+    <div class="form-group">
+        <label>Gemini API Key (Primary)</label>
+        <input type="password" id="geminiKey" placeholder="Enter API Key">
+        <div class="hint">Required. Powers the main logic.</div>
+    </div>
+
+    <div class="form-group">
+        <label>Groq API Key (Fallback 1)</label>
+        <input type="password" id="groqKey" placeholder="Optional">
+    </div>
+
+    <div class="form-group">
+        <label>OpenRouter API Key (Fallback 2)</label>
+        <input type="password" id="openRouterKey" placeholder="Optional">
+    </div>
+
+    <button id="save">Save Settings</button>
+    <div id="status">Settings Saved!</div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>

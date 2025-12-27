@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+*.zip
+logs/
+*.log
+.vscode/
+
+# Secrets
+secrets.js
+*.env
