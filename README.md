@@ -15,17 +15,31 @@ LeetMentor is a Chrome Extension that integrates directly into the LeetCode inte
 *   **🎨 Shadow DOM UI**: Floating UI that never conflicts with LeetCode's styles.
 *   **🔑 Bring Your Own Key**: Supports Gemini (Google), Llama 3 (Groq), and Olmo (OpenRouter) via your own API keys for privacy and speed.
 
-## 📦 Installation
+## 📦 Installation (Critical Setup)
 
 1.  **Clone the Repo**:
     ```bash
     git clone https://github.com/Chiragadve/LeetMentor.git
+    cd LeetMentor
     ```
-2.  Open Chrome and navigate to `chrome://extensions`.
-3.  Enable **Developer Mode** (top right toggle).
-4.  Click **Load unpacked**.
-5.  Select the `LeetMentor` folder.
-6.  Go to any LeetCode problem (e.g., [Two Sum](https://leetcode.com/problems/two-sum/)) to see it in action!
+
+2.  **⚠️ CRITICAL STEP**: Create the Config File
+    *   The extension **will not load** (Error Code 3) without this file.
+    *   Run this in your terminal (or rename manually):
+        ```bash
+        cp secrets.example.js secrets.js
+        # Windows: copy secrets.example.js secrets.js
+        ```
+
+3.  **Load in Chrome**:
+    *   Go to `chrome://extensions`.
+    *   Enable **Developer Mode** (top right).
+    *   Click **Load unpacked**.
+    *   Select the `LeetMentor` folder.
+
+4.  **Test It**:
+    *   Go to a LeetCode problem (e.g., [Two Sum](https://leetcode.com/problems/two-sum/)).
+    *   Click the LeetMentor icon!
 
 ## ⚙️ Configuration
 
