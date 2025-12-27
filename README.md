@@ -2,7 +2,7 @@
 
 **Your AI-Powered Algorithmic Companion for LeetCode.**
 
-LeetMentor is a Chrome Extension that integrates directly into the LeetCode interface to provide "Pedagogical Hints" rather than giving away the answer. It acts as a private tutor, analyzing your code logic and specific runtime errors to unblock you without spoiling the learning opportunity.
+LeetMentor is a browser Extension that integrates directly into the LeetCode interface to provide "Pedagogical Hints" rather than giving away the answer. It acts as a private tutor, analyzing your code logic and specific runtime errors to unblock you without spoiling the learning opportunity.
 
 ![LeetMentor Logo](logo.png)
 
